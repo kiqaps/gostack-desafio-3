@@ -1,11 +1,12 @@
-import React from "react";
-import { render, fireEvent, act } from "@testing-library/react";
+import { act, fireEvent, render } from "@testing-library/react";
+
+import App from "../App";
 import MockAdapter from "axios-mock-adapter";
+import React from "react";
 import api from "../services/api";
 
 const apiMock = new MockAdapter(api);
 
-import App from "../App";
 
 const wait = (amount = 0) => {
   return new Promise((resolve) => setTimeout(resolve, amount));
@@ -61,6 +62,6 @@ describe("App component", () => {
 
     await actWait();
 
-    expect(getByTestId("repository-list")).toBeEmpty();
+    expect(getByTestId("repository-list")).toBeEmptyDOMElement();
   });
 });
